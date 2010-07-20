@@ -32,3 +32,23 @@ Then /^I should see that "([^"]*)" weighs (\d+) (\w+)$/ do |gadget_name, weight,
     assert page.has_content?(gadget.complete_weight)
   end
 end
+
+Given /^the gadget called "([^"]+)" has (\d+) parts$/ do |gadget_name, num_parts|
+  gadget_id = Gadget.find_by_name(gadget_name).id
+  (1..num_parts.to_i).each do |count|
+    Factory :part, :gadget_id => gadget_id, :name => "part number #{count}"
+  end
+end
+
+Then /^I should see that "([^"]+)" has (\d+) parts$/ do |name, num|
+  gadget = Gadget.find_by_name(name)
+
+  # uh-oh: the below assertion is not really expressed in the desc. above
+  num = num.to_i
+  assert_equal gadget.parts.size, num
+  
+  within("##{gadget.verbose_id}") do
+    assert page.has_content?("#{num} parts")
+  end
+      
+end

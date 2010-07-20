@@ -66,3 +66,7 @@ dl {
   dl dd {
     font-size: 1.4em;
     margin-bottom: 12px; }
+  
+dl.sublist {
+  font-size: 8px; /* @todo fix this hack */
+}

@@ -6,6 +6,13 @@
 
   %dt Weight
   %dd= @gadget.complete_weight
+  
+  %dt Parts
+  %dd
+    %dl{:class => 'sublist'}
+      %dt Number of Parts:
+      %dd{:id => 'num-parts'}
+        = "#{@gadget.parts.size} part#{@gadget.parts.size == 1 ? '' : 's'}"
 
 = link_to "Back to Gadget Overview", root_path, :class => "breadcrumb"
 = link_to "View Parts", 'parts', :class => 'breadcrumb'
