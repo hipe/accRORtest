@@ -9,13 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100716034935) do
+ActiveRecord::Schema.define(:version => 20100720121500) do
 
   create_table "gadgets", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "weight"
     t.string   "weight_unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parts", :force => true do |t|
+    t.string   "name"
+    t.integer  "widget_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
