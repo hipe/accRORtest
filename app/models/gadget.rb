@@ -1,4 +1,6 @@
 class Gadget < ActiveRecord::Base
+  has_many :parts
+
   def complete_weight
     "#{weight} #{weight_unit}"
   end
