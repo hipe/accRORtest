@@ -2,7 +2,7 @@ class CreateParts < ActiveRecord::Migration
   def self.up
     create_table :parts do |t|
       t.string :name
-      t.integer :widget_id
+      t.integer :gadget_id
       t.timestamps
     end
   end
