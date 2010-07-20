@@ -1,0 +1,17 @@
+%h2
+  New Part for "#{@gadget_name}" gadget.
+
+%form{:method=>'POST', :action=>"/gadgets/#{@gadget_id}/parts"}
+  %table
+    %tr
+      %th
+        Part Name:
+      %td
+        %input{:type=>'text', :name=>'part_name'}
+        %input{:type=>'hidden', :name=>'authenticity_token', :value=>form_authenticity_token}
+      %tr
+        %td{:colspan=>'2'}
+          %button
+            submit
+          %button{:onclick=>"javascript:window.location.replace('/gadgets/#{@gadget_id}/detail'); return false;"}
+            cancel
