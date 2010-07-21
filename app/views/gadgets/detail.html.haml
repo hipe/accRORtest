@@ -6,14 +6,49 @@
 
   %dt Weight
   %dd= @gadget.complete_weight
-  
+
+  %dt Number Of Parts
+  %dd{:id => 'num-parts'}
+    = "#{@gadget.parts.size} part#{@gadget.parts.size == 1 ? '' : 's'}"
+
   %dt Parts
   %dd
-    %dl{:class => 'sublist'}
-      %dt Number of Parts:
-      %dd{:id => 'num-parts'}
-        = "#{@gadget.parts.size} part#{@gadget.parts.size == 1 ? '' : 's'}"
+    %table.index
+      %thead
+        %tr
+          %th Id
+          %th Name      
+      %tbody
+        - @gadget.parts.each do |p|
+          %tr{:class => cycle("odd", "even"), :id => p.id}
+            - # %td.twenty= link_to p.name, detail_part_path(g)
+            %td.twenty= p.id        
+            %td.twenty= p.name
+        - unless @show_new_part
+          %tr
+            %td{:colspan => 2, :class=>'buttons'}
+              %button{:onclick=>"javascript:window.location.replace('/gadgets/#{@gadget.id}/parts/new'); return false;"}
+                add
+              - # = link_to "Add", 'parts/new', :class => 'button'
+        - if @show_new_part
+          %tr
+            %td{:colspan => 2}
+              %form{:method=>'POST', :action=>"/gadgets/#{@gadget.id}/parts", :class=>'form-width-hack'}
+                %table
+                  %tr
+                    %th
+                      Part Name:
+                    %td
+                      %input{:type=>'text', :name=>'part_name'}
+                      %input{:type=>'hidden', :name=>'authenticity_token', :value=>form_authenticity_token}
+                    %tr
+                      %td{:colspan=>'2'}
+                        %button
+                          submit
+                        %button{:onclick=>"javascript:window.location.replace('/gadgets/#{@gadget_id}/detail'); return false;"}
+                          cancel
+
+
+            
 
 = link_to "Back to Gadget Overview", root_path, :class => "breadcrumb"
-= link_to "View Parts", 'parts', :class => 'breadcrumb'
-= link_to "Add Part", 'parts/new', :class => 'breadcrumb'

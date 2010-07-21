@@ -10,15 +10,12 @@ class PartsController < ApplicationController
     redirect_to "/gadgets/#{gadget_id}/detail"
   end
   
-  def index
-    fetch_gadget
-    @parts = @gadget.parts    
-  end  
-
   def new
     fetch_gadget
     @gadget_name = @gadget.name
     @gadget_id = params[:gadget_id]
+    @show_new_part = true
+    render '/gadgets/detail', :layout => 'application'
   end
 
   protected

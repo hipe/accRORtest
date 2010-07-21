@@ -33,3 +33,13 @@ a {
       border: 1px solid #ab0a0a; }
   a.breadcrumb {
     font-size: 1.2em; }
+    
+td.buttons {
+  text-align: right;
+  padding-top:0.75em !important;
+}
+
+td.buttons a.button {
+  border: 2px solid #333;
+  -moz-border-radius: 6px;
+}

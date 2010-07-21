@@ -70,3 +70,8 @@ dl {
 dl.sublist {
   font-size: 8px; /* @todo fix this hack */
 }
+
+/* @todo fix this hack */
+form.form-width-hack {
+  width: 5px;
+}

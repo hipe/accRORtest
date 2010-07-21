@@ -20,12 +20,12 @@ Feature: Gadget Detail
       When I follow "Back to Gadget Overview"
       Then I should be on the gadget overview page
     
-    @wip @todo @parts
+    @todo @parts
     Scenario: User adds a part to a gadget
       Given I am viewing the gadget detail page for "The Atrocious Condor Waffler"
       When I add a part called "megawidget" to "The Atrocious Condor Waffler"
       Then I should be viewing the gadget detail page for "The Atrocious Condor Waffler"
-      And I should see "megawidget" within the parts for "The Atrovious Condor Waffler"
+      And I should see "megawidget" within the parts for "The Atrocious Condor Waffler"
 
     @wip @parts 
     Scenario: User receives a notice after successfully adding a part to a gadget
