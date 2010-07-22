@@ -27,7 +27,7 @@
         - unless @show_new_part
           %tr
             %td{:colspan => 2, :class=>'buttons'}
-              %button{:onclick=>"javascript:window.location.replace('/gadgets/#{@gadget.id}/parts/new'); return false;"}
+              %button{:id => 'btn-add', :onclick=>"javascript:window.location.replace('/gadgets/#{@gadget.id}/parts/new'); return false;"}
                 add
               - # = link_to "Add", 'parts/new', :class => 'button'
         - if @show_new_part
@@ -45,7 +45,7 @@
                       %td{:colspan=>'2'}
                         %button
                           submit
-                        %button{:onclick=>"javascript:window.location.replace('/gadgets/#{@gadget_id}/detail'); return false;"}
+                        %button{ :onclick=>"javascript:window.location.replace('/gadgets/#{@gadget_id}/detail'); return false;"}
                           cancel
 
 

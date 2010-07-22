@@ -49,18 +49,24 @@ Then /^I should see that "([^"]+)" has (\d+) parts$/ do |name, num|
   within("##{gadget.verbose_id}") do
     assert page.has_content?("#{num} parts")
   end
-      
 end
 
+# mmeves: the below was what i initially tried, wrong way to do it!
+# When /^I add a part called "([^"]+)" to "([^"]+)"$/ do |part_name, gadget_name|
+#   gadget = Gadget.find_by_name(gadget_name)
+#   Factory :part, :gadget_id => gadget.id, :name => part_name
+# end 
+
 When /^I add a part called "([^"]+)" to "([^"]+)"$/ do |part_name, gadget_name|
-  gadget = Gadget.find_by_name(gadget_name)
-  Factory :part, :gadget_id => gadget.id, :name => part_name
+  find("#btn-add").click
+  fill_in("part_name", :with => part_name)
+  click("submit")
 end 
 
 Then /^I should see "([^"]*)" within the parts for "([^"]*)"$/ do |part_name, gadget_name|
   gadget = Gadget.find_by_name(gadget_name)
   assert gadget, "found gadget named \"#{gadget_name}\""
   within("##{gadget.verbose_id}") do
-    assert page.has_content?(gadget_name)
+    assert page.has_content?(part_name)
   end
 end
