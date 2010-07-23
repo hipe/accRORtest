@@ -19,7 +19,7 @@ group :test do
   gem "capybara", ">=0.3.9"
   gem "cucumber", ">=0.8.5"
   gem "cucumber-rails", ">=0.3.0"
-  gem "gherkin", ">=2.1.4"
+  gem "gherkin", "=2.1.4"
   gem "database_cleaner", ">=0.5.2"
   gem "launchy"
   gem "rspec", ">=1.2.9"
